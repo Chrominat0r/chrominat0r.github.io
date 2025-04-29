@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bird Migration Tracker</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bird Migration Tracker</title>
 
-  <link rel="stylesheet" href="Web.css">
-  
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="Web.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 
 </head>
 <body>
+    <a href="B&B/Birds%20and%20the%20Bees.html" id="home-button">🏠 Home</a>
 
-  <header>
-    <h1>Bird Migration Tracker</h1>
-    <p>Follow the flight paths of migrating birds</p>
-  </header>
+    <header>
+        <h1 style="font-size: 300%; color: black">Bird Migration Tracker</h1>
+        <p style="color:black">Follow the flight paths of migrating birds</p>
 
-  <div class="controls">
-      <select id="speciesSelect">
-          <option value="">-- Select a species --</option>
-          <option value="AFGoose.html">Antarctic Flightless Goose</option>
-          <option value="KillerBee.html">Giant Martian Killer Bee</option>
-      </select>
-  </div>
+        <div class="controls">
+            <select id="speciesSelect">
+                <option value="">-- Select a species --</option>
+                <option value="SpringGoose.html">Northern Wheatear</option>
+                <option value="KillerBee.html">East African Lowland Honey Bee</option>
+                <option value="SpringRaptor.html">Swainson's Hawk</option>
+            </select>
+        </div>
+    </header>
 
-<script>
-    document.getElementById('speciesSelect').addEventListener('change', function () {
-        const selected = this.value;
-        if (selected) {
-            window.location.href = `species/${selected}`;
-        }
-    });
-</script>
+    <div class="flex-container">
+        <div id="Definition">
+            <h2>What is Migration?</h2>
+            <p style="font-size:80%;">
+                Animal migration is the relatively long-distance movement of individual animals,
+                usually on a seasonal basis. It is the most common form of migration in ecology.
+                It is found in all major animal groups, including birds, mammals, fish, reptiles,
+                amphibians, insects, and crustaceans. The cause of migration may be local climate,
+                local availability of food, the season of the year or for mating.
+            </p>
+        </div>
+        <div id="wiki_image">
+            <img src="Mig_Info_Image.jpg" alt="Geese Migrating!" style="width:500px;height:300px" ;>
+            <p style="font-size:70%;">
+                To be counted as a true migration, and not just a local dispersal or irruption,
+                the movement of the animals should be an annual or seasonal occurrence, or a
+                major habitat change as part of their life.
+            </p>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('speciesSelect').addEventListener('change', function () {
+            const selected = this.value;
+            if (selected) {
+                window.location.href = `species/${selected}`;
+            }
+        });
+    </script>
 
 
 </body>
