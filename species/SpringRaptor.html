@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bird Migration Tracker</title>
+    <link rel="stylesheet" href="../Web.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</head>
+<body>
+    <a href="../Birds%20and%20the%20Bees.html" id="home-button">🏠 Home</a>
+    <header>
+        <h1>Swainson's Hawk</h1>
+        <p>Long Distance Raptors. Pretty impressive, given the distances.</p>
+    </header>
+    <div>
+        <select id="seasonFilter">
+            <option value="">-- Choose a season--</option>
+            <option value="SpringRaptor.html">Spring</option>
+            <option value="FallRaptor.html">Fall</option>
+        </select>
+    </div>
+
+    <div id="sidebar">
+        <h1>Swainson's Hawk</h1>
+        <div class="season-label">Spring Migration</div>
+        <p><strong>Path:</strong>Argentina → Central America → North-West America</p>
+        <p><strong>Total Distance:</strong> 10,000 - 14,000 km</p>
+        <p><strong>Peak Movement:</strong> March-May</p>
+        <p><strong>Typical Altitude:</strong> 6,000–10,000 ft</p>
+        <p><strong>Notes:</strong> They change their diet to almost exclusively grasshoppers and locusts while down south, which has them called Grasshopper Hawk too!</p>
+        <p> <img src="SWAIN_H.jpg" alt="Majestic looking things, Hawks." style="width:100%;height:70%" /></p>
+    </div>
+
+    <div id="map"></div>
+
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+
+        const map = L.map('map', {
+            worldCopyJump: false,
+            maxBounds: [
+                [-90, -180],
+                [90, 180]
+            ],
+            maxBoundsViscosity: 1.0,
+            minZoom: 2,
+            maxZoom: 10,
+            zoomSnap: 0.5,
+            zoomDelta: 0.5
+        }).setView([20, 0], 2);
+
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        const migrationPath = [
+            [48.0487, -117.29003],
+            [18.1458, -98.2617],
+            [-1.0546, -69.6093],
+            [-37.4399, -66.7968]
+        ];
+
+        const snowGooseLine = L.polyline(migrationPath, {
+            color: 'blue',
+            weight: 4,
+            opacity: 0.7,
+            dashArray: '10, 6'
+        }).addTo(map);
+
+
+        map.fitBounds(snowGooseLine.getBounds());
+
+        const sampleMarker = L.marker([48.0487, -117.29003],).addTo(map).bindPopup('End Location');
+
+    </script>
+
+    <script>
+        document.getElementById('seasonFilter').addEventListener('change', function () {
+            const selected = this.value;
+            if (selected) {
+                window.location.href = `${selected}`;
+            }
+        });
+    </script>
+</body>
+</html>
